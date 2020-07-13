@@ -1,12 +1,10 @@
 ﻿using eShopSolution.ViewModels.Catalog.Product;
 using eShopSolution.ViewModels.Common;
-using Microsoft.AspNetCore.Http;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace eShopSolution.Application.Catalog.Products
 {
-    public interface IManageProductService
+    public interface IProductImageService
     {
         Task<int> Create(ProductCreateRequest request);
 
@@ -16,14 +14,10 @@ namespace eShopSolution.Application.Catalog.Products
 
         Task<bool> UpdatePrice(int productId, decimal newPrice);
 
-        Task<bool> UpdateStock(int productId, int addQuantity);
+        Task<bool> UpdateStock(int productId, decimal addedQuantity);
 
         Task AddViewCount(int productId);
 
         Task<PagedResult<ProductViewModel>> GetAllPaging(GetManageProductPagingRequest request);
-        Task<bool> AddImage(int productId, List<IFormFile> files);
-        Task<bool> RemoveImage(int imageId);
-        Task<bool> UpdateImage(int imageId, string caption, bool isDefault);
-        Task<List<ProductImageViewModel>> GetListImage(int productId);
     }
 }
